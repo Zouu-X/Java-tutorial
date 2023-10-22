@@ -6,9 +6,10 @@ import java.io.IOException;
 import java.net.URL;
 
 //练习Thread，实现多线程同步下载图片
-public class demo02 extends Thread {
+public class demo02 implements Runnable {
     private String url;
     private String name;
+    //有参构造
     public demo02(String url, String name) {
         this.url = url;
         this.name = name;
@@ -16,6 +17,7 @@ public class demo02 extends Thread {
     //下载图片线程的执行体
     @Override
     public void run() {
+        //重写方法，里面放下载图片的逻辑
         WebDownloader webDownloader = new WebDownloader();
         webDownloader.downloader(url, name);
         System.out.println("下载了" + name);
@@ -26,9 +28,12 @@ public class demo02 extends Thread {
         demo02 t2 = new demo02("https://img2023.cnblogs.com/blog/80824/202310/80824-20231019131453499-1730128068.png", "pic2.jpg");
         demo02 t3 = new demo02("https://cdn02.nintendo-europe.com/media/images/08_content_images/games_6/nintendo_switch_7/nswitch_splatoon2/nswitch_splatoon2_news_vers2/NSwitch_Splatoon2_newhair_4.jpg", "pic3.jpg");
 
-        t1.start();
-        t2.start();
-        t3.start();
+//        t1.start();
+//        t2.start();
+//        t3.start();
+        new Thread(t1).start();
+        new Thread(t2).start();
+        new Thread(t3).start();
     }
 }
 

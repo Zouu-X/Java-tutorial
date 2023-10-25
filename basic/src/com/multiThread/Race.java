@@ -5,16 +5,14 @@ public class Race implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 0; i <= 100; i++) {
-
-            if (Thread.currentThread().getName().equals("兔子")) {
-                try {
-                    Thread.sleep(1);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        if (Thread.currentThread().getName().equals("兔子")) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-
+        }
+        for (int i = 0; i <= 100; i++) {
             boolean flag = gameOver(i);
             if(flag) {
                 break;

@@ -11,7 +11,7 @@ public class DemoUnsafeTicket {
 }
 
 class BuyTicket implements Runnable {
-    private int ticketNums = 10;
+    private int ticketNums = 100;
     boolean flag = true;
     @Override
     public void run() {
@@ -24,13 +24,14 @@ class BuyTicket implements Runnable {
             }
         }
     }
-    private void buy() throws InterruptedException {
+    //同步方法，锁了this
+    private synchronized void buy() throws InterruptedException {
         //判断是否有票
         if (ticketNums <= 0) {
             flag = false;
             return;
         }
-        Thread.sleep(100);
+//        Thread.sleep(200);
         System.out.println(Thread.currentThread().getName() + "拿到" + ticketNums--);
     }
 }

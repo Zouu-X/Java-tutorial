@@ -4,9 +4,9 @@ public class DemoUnsafeTicket {
     public static void main(String[] args) {
         BuyTicket station = new BuyTicket();
 
-        new Thread(station, "Me").start();
-        new Thread(station, "You").start();
-        new Thread(station, "He").start();
+        new Thread(station, "Fans-1").start();
+        new Thread(station, "Fans-2").start();
+        new Thread(station, "Fans-3").start();
     }
 }
 
